@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { AudioRecorder } from "react-audio-voice-recorder";
+import { FaQuestionCircle } from "react-icons/fa"; // Import the help icon from react-icons
 
 interface FormData {
   fullName: string;
@@ -117,12 +118,19 @@ export default function RegistrationForm() {
         </div>
 
         {/* Audio Recorder */}
-        <div>
+        <div className="flex items-center">
           <label className="block text-sm font-medium text-gray-700">
             Generate voice signature
           </label>
-          <AudioRecorder onRecordingComplete={handleAudioRecording} />
+          {/* Help Icon with Tooltip */}
+          <div className="ml-2 relative group">
+            <FaQuestionCircle className="text-gray-500 cursor-pointer" />
+            <div className="absolute bottom-0 left-full ml-2 w-48 p-2 bg-gray-700 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              Associate a voice signature to your ID to verify contributions made during events.
+            </div>
+          </div>
         </div>
+        <AudioRecorder onRecordingComplete={handleAudioRecording} />
 
         {/* Submit Button */}
         <div>
