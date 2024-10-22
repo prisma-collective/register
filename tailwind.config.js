@@ -11,6 +11,9 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 50s linear infinite',
       },
+      fontFamily: {
+        sans: ['var(--font-space-grotesk)', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Space_Grotesk } from 'next/font/google';
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -32,7 +26,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         {/* You can add other icons for various platforms if needed */}
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${spaceGrotesk.className}`}>
         {children}
       </body>
     </html>
