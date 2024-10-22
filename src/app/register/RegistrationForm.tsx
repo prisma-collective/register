@@ -1,9 +1,18 @@
 "use client";
 
 import { useState } from 'react';
+import { AudioRecorder } from "react-audio-voice-recorder";
+
+interface FormData {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  audioBlob?: Blob;
+}
 
 export default function RegistrationForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
     password: '',
@@ -14,12 +23,27 @@ export default function RegistrationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Function to handle audio recording and save it to formData
+  const handleAudioRecording = (blob: Blob) => {
+    setFormData({ ...formData, audioBlob: blob });
+    console.log("Audio recorded: ", blob);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Basic validation: Check if passwords match
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
+    }
+
+    // Create a FormData object to submit the form
+    const data = new FormData();
+    data.append("fullName", formData.fullName);
+    data.append("email", formData.email);
+    data.append("password", formData.password);
+    if (formData.audioBlob) {
+      data.append("audio", formData.audioBlob, "recording.wav"); // Append audio file to form data
     }
     console.log('Form submitted:', formData);
   };
@@ -90,6 +114,14 @@ export default function RegistrationForm() {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
+        </div>
+
+        {/* Audio Recorder */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Generate voice signature
+          </label>
+          <AudioRecorder onRecordingComplete={handleAudioRecording} />
         </div>
 
         {/* Submit Button */}
