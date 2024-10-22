@@ -3,18 +3,18 @@
   "short_name": "Prisma Registration",
   "icons": [
     {
-      "src": "../public/favicon.ico",
+      "src": "./favicon.ico",
       "sizes": "any",
       "type": "image/x-icon"
     },
     {
-      "src": "../public/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "../public/apple-touch-icon.png",
+      "src": "./apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
