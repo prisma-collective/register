@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   }
 
   // Validate registration type
-  const validTypes = ['participants', 'tech-partners', 'communities', 'local-communities'];
+  const validTypes = ['participant', 'partner', 'copr', 'copl'];
   if (!validTypes.includes(registrationType)) {
     return NextResponse.json({ message: 'Invalid registration type' }, { status: 400 });
   }
@@ -27,9 +27,9 @@ export async function POST(request: Request) {
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
     const message = `New registration:
-Type: ${registrationType}
-Name: ${name}
-Email: ${email}`;
+                    Type: ${registrationType}
+                    Name: ${name}
+                    Email: ${email}`;
 
     const telegramResponse = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
       method: 'POST',
