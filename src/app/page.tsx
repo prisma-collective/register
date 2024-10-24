@@ -5,10 +5,10 @@ import RegistrationForm from './register/RegistrationForm';
 import './styles/style.css'; // Adjust the path as necessary
 
 const stakeholderTypes = [
-  { name: 'Participants', id: 'participants', description: 'Individuals', image: 'url' },
-  { name: 'Communities of Place', id: 'copl', description: 'Bioregional hubs & locals', image: 'url' },
-  { name: 'Communities of Practice', id: 'copr', description: 'Network representatives', image: 'url' },
-  { name: 'Partners', id: 'tech-partners', description: 'Technologies, funders, institutions', image: 'url' },
+  { name: 'Participants', id: 'participants', description: 'Individuals', image: './card-participant.svg' },
+  { name: 'Communities of Place', id: 'copl', description: 'Bioregional hubs & locals', image: './card-copl.svg' },
+  { name: 'Communities of Practice', id: 'copr', description: 'Network representatives', image: './card-copr.svg' },
+  { name: 'Partners', id: 'tech-partners', description: 'Technologies, funders, institutions', image: './card-partners.svg' },
 ];
 
 export default function Home() {
@@ -38,15 +38,18 @@ export default function Home() {
                   <div
                     key={type.id}
                     onClick={() => setSelectedType(type.id)}
-                    className="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 p-6 cursor-pointer flex flex-col transform transition-transform hover:scale-105"
+                    className="relative bg-gray-800 bg-opacity-40 rounded-xl border border-gray-600 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col transform transition-transform hover:scale-105"
                   >
                     <img
-                      src={type.image} // Assuming 'type.image' contains the URL/ path of the image
+                      src={type.image}
                       alt={type.name}
-                      className="h-40 w-full object-cover mb-4"
+                      className="h-50 w-full object-cover mb-0"
                     />
-                    <h2 className="text-2xl font-semibold text-black mb-2 truncate">{type.name}</h2>
-                    <p className="text-gray-600 mb-4 truncate">{type.description}</p>
+                    <div className="absolute inset-0 bg-gray-600 bg-opacity-15 z-10" />
+                    <div className="p-6">
+                      <h2 className="text-2xl font-semibold text-white mb-2 z-20 relative truncate">{type.name}</h2>
+                      <p className="text-gray-300 mb-4 truncate">{type.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
