@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Use 'next/navigation' in App Router
 import { AudioRecorder } from "react-audio-voice-recorder";
 import { FaQuestionCircle } from "react-icons/fa"; // Import the help icon from react-icons
 
@@ -19,6 +20,8 @@ export default function RegistrationForm() {
     password: '',
     confirmPassword: '',
   });
+
+  const router = useRouter(); // Initialize the router
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,15 +59,13 @@ export default function RegistrationForm() {
 
       // Handle the response
       if (!response.ok) {
-        const errorData = await response.json();
-        alert(`Error: ${errorData.message}`);
-      } else {
-        const successData = await response.json();
-        alert(successData.message); // Show success message
+        throw new Error('Failed to register');
       }
+
+      // Navigate to the success page upon successful registration
+      router.push('/success');
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting the form. Please try again later.');
+      alert('Registration failed: ' + (error as Error).message);
     }
   };
 
