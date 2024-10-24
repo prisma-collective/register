@@ -2,14 +2,14 @@
 
 import { useEffect } from 'react';
 import '../styles/style.css'; 
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 
 export default function WalletConnect() {
-  const searchParams = useSearchParams();
-  const name = searchParams.get('name')
-  const submission_id = searchParams.get('submission_id');
-  const respondent_id = searchParams.get('respondent_id');
-  const stakeholderType = searchParams.get('type');
+  // const searchParams = useSearchParams();
+  // const name = searchParams.get('name')
+  // const submission_id = searchParams.get('submission_id');
+  // const respondent_id = searchParams.get('respondent_id');
+  // const stakeholderType = searchParams.get('type');
 
   useEffect(() => {
     // Logic to check if a wallet is already connected
