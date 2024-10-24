@@ -18,9 +18,9 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen relative pt-5 pb-5">
+    <div className="h-screen relative">
       <div className="mesh-gradient absolute inset-0 z-10" /> 
-      <div className="min-h-screen flex flex-col items-center justify-center relative z-20">
+      <div className="min-h-screen flex flex-col items-center justify-center relative z-20 pt-5 pb-5">
         <a href="https://prisma.events" target="_blank" rel="noopener noreferrer" className="mb-6">
           <img 
             src="/logo_colour.svg" 
