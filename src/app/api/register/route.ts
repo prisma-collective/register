@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   const email = formData.get("email")?.toString() || '';
   const password = formData.get("password")?.toString() || '';
   const registrationType = formData.get("registrationType")?.toString() || '';
-  const audioBlob = formData.get("audio");
 
   if (!name || !email || !password || !registrationType) {
     return NextResponse.json({ message: 'Missing fields' }, { status: 400 });
