@@ -1,0 +1,25 @@
+/* styles.css */
+.mesh-gradient {
+    position: absolute; /* Ensure it covers the entire container */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: radial-gradient(circle at 50% 50%, #051d27, #003a53, #c362ff90);
+    animation: move 30s linear infinite; /* Adjust the timing and easing as needed */
+    background-size: 200% 200%; /* Allow the background to animate smoothly */
+    z-index: 0; /* Place behind other content */
+  }
+  
+  @keyframes move {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%; /* Midway through the animation */
+    }
+    100% {
+      background-position: 0% 0%; /* Reset to start position without a jump */
+    }
+  }
+  

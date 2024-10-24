@@ -1,23 +1,22 @@
 "use client";
 
-import RegistrationForm from './RegistrationForm'; // Import the form component
+import RegistrationForm from './RegistrationForm';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Register() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      {/* Logo centered above the form */}
-      <a href="https://prisma.events" target="_blank" rel="noopener noreferrer" className="mb-6">
-        <img 
-          src="/logo_colour.svg" 
-          alt="Prisma Events" 
-          className="h-16 w-auto animate-spin-slow" 
-        />
-      </a>
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const stakeholderType = searchParams.get('type') || 'default';
 
-      {/* Registration Form */}
-      <div className="w-full max-w-lg">
-        <RegistrationForm />
-      </div>
+  const handleBack = () => {
+    router.push('/');
+  };
+  return (
+    <div className="min-h-screen w-full">
+      <RegistrationForm 
+        stakeholderType={stakeholderType}
+        onBack={handleBack}
+      />
     </div>
   );
 }

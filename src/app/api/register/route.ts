@@ -6,22 +6,31 @@ export async function POST(request: Request) {
   const name = formData.get("fullName")?.toString() || '';
   const email = formData.get("email")?.toString() || '';
   const password = formData.get("password")?.toString() || '';
+  const registrationType = formData.get("registrationType")?.toString() || '';
   const audioBlob = formData.get("audio");
 
-  // Here you would typically save the user to the database
-  // But for now, we'll just simulate a successful response
-
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !registrationType) {
     return NextResponse.json({ message: 'Missing fields' }, { status: 400 });
   }
 
-  // Send notification to Telegram (assuming you're doing it here)
-  // Here you can also implement the Telegram bot logic
+  // Validate registration type
+  const validTypes = ['participants', 'tech-partners', 'communities', 'local-communities'];
+  if (!validTypes.includes(registrationType)) {
+    return NextResponse.json({ message: 'Invalid registration type' }, { status: 400 });
+  }
+
+  // Here you would typically save the user to the database
+  // Include the registrationType in your database schema
+
   try {
     const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
-    const message = `New registration:\nName: ${name}\nEmail: ${email}`;
+    const message = `New registration:
+Type: ${registrationType}
+Name: ${name}
+Email: ${email}`;
+
     const telegramResponse = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
       method: 'POST',
       headers: {
@@ -36,11 +45,10 @@ export async function POST(request: Request) {
     if (!telegramResponse.ok) {
       throw new Error('Failed to send message to Telegram');
     }
-  } catch (error) {
-    console.error('Error sending message to Telegram:', error);
-    return NextResponse.json({ message: 'User registered successfully, but failed to notify Telegram.' }, { status: 200 });
-  }
 
-  // Simulate a success response
-  return NextResponse.json({ message: 'User registered successfully!' }, { status: 200 });
+    return NextResponse.json({ message: 'User registered successfully!' }, { status: 200 });
+  } catch (error) {
+    console.error('Error during registration:', error);
+    return NextResponse.json({ message: 'Registration failed.' }, { status: 500 });
+  }
 }
