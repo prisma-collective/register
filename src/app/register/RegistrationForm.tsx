@@ -46,7 +46,26 @@ export default function RegistrationForm() {
     if (formData.audioBlob) {
       data.append("audio", formData.audioBlob, "recording.wav"); // Append audio file to form data
     }
-    console.log('Form submitted:', formData);
+
+    try {
+      // Send the form data to the /api/register endpoint
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        body: data,
+      });
+
+      // Handle the response
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.message}`);
+      } else {
+        const successData = await response.json();
+        alert(successData.message); // Show success message
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again later.');
+    }
   };
 
   return (
