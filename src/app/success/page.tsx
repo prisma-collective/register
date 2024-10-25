@@ -1,9 +1,17 @@
 "use client";
 
-import Link from 'next/link';
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
+  );
+}
+
+function SuccessContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
 
@@ -13,9 +21,6 @@ export default function SuccessPage() {
       <p className="text-lg text-gray-700 mb-6">
         Thank you for registering as a {type}. Your account has been created successfully.
       </p>
-      <Link href="/" className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-        Go to Home
-      </Link>
     </div>
   );
 }

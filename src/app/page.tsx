@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import './styles/style.css'; 
+import Image from 'next/image'; 
 
 const stakeholderTypes = [
   { name: 'Participants', id: '3NB7ON', description: 'Individuals', image: './card-participant.svg' },
@@ -22,10 +23,12 @@ export default function Home() {
       <div className="mesh-gradient absolute inset-0 z-10" /> 
       <div className="min-h-screen flex flex-col items-center justify-center relative z-20 pt-5 pb-5">
         <a href="https://prisma.events" target="_blank" rel="noopener noreferrer" className="mb-6">
-          <img 
-            src="/logo_colour.svg" 
-            alt="Prisma Events" 
-            className="h-16 w-auto animate-spin-slow" 
+          <Image 
+              src="/logo_colour.svg" 
+              alt="Prisma Events Logo" 
+              className="h-16 w-auto animate-spin-slow" 
+              width={64} // Specify width
+              height={64} // Specify height
           />
         </a>
         <div className="container mx-auto px-16">
@@ -39,10 +42,12 @@ export default function Home() {
                 onClick={() => handleCardClick(type.id)} // Call handleCardClick on click
                 className="relative bg-gray-800 bg-opacity-40 rounded-xl border border-gray-600 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer flex flex-col transform transition-transform hover:scale-105"
               >
-                <img
-                  src={type.image}
-                  alt={type.name}
+                <Image
+                  src={type.image} // Use the Image component
+                  alt={type.name} // Keep the alt attribute for accessibility
                   className="h-50 w-full object-cover mb-0"
+                  width={200} // Specify a width (adjust as necessary)
+                  height={150} // Specify a height (adjust as necessary)
                 />
                 <div className="h-0.5 bg-white bg-opacity-30" />
                 <div className="absolute inset-0 bg-gray-600 bg-opacity-15 z-10" />
