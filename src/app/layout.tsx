@@ -10,6 +10,26 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Prisma Events Registration",
   description: "Register for Prisma Events",
+  openGraph: {
+    type: "website",
+    title: "Prisma Events Registration",
+    description: "Register for Prisma Events",
+    images: [
+      {
+        url: "https://prisma.events/sm_banner.png",
+        width: 1504,
+        height: 787,
+        alt: "Prisma Events Registration Preview",
+      },
+    ],
+    url: "https://prisma.events",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prisma Events Registration",
+    description: "Register for Prisma Events",
+    images: ["https://yourwebsite.com/sm_banner.png"],
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +44,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        {/* You can add other icons for various platforms if needed */}
       </head>
       <body className={`${spaceGrotesk.className}`}>
         {children}
