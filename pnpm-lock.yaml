@@ -11,6 +11,9 @@ importers:
       '@ceramicnetwork/http-client':
         specifier: ^6.4.0
         version: 6.4.0(typescript@5.8.3)
+      '@ceramicnetwork/stream-tile':
+        specifier: ^6.4.0
+        version: 6.4.0(typescript@5.8.3)
       '@tailwindcss/postcss':
         specifier: ^4.1.4
         version: 4.1.4

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ceramicnetwork/http-client": "^6.4.0",
+    "@ceramicnetwork/stream-tile": "^6.4.0",
     "@tailwindcss/postcss": "^4.1.4",
     "dids": "^5.0.3",
     "key-did-provider-ed25519": "^4.0.2",
