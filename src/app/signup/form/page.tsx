@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import RegistrationForm from './RegistrationForm';
 import { useSearchParams } from 'next/navigation';
 
-export default function Register() {
+export default function FormEmbed() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <RegisterContent />
