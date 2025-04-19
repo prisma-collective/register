@@ -29,7 +29,7 @@ export default function Home() {
               height={270.17273} // Specify height
           />
         </a>
-        <h1 className="text-2xl mb-8 text-center text-white">Choose your role...</h1>
+        <h1 className="text-2xl mb-8 mt-4 text-center text-white">Choose your role...</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-10 mb-40 md:mb-0">
           {stakeholderTypes.map((type) => (
             <div

@@ -1,7 +1,6 @@
-// lib/didManager.ts
+import { Ed25519Provider } from 'key-did-provider-ed25519'
+import KeyResolver from 'key-did-resolver'
 import { DID } from 'dids'
-import { Ed25519Provider } from '@3id/did-provider-ed25519'
-import { KeyDidResolver } from 'key-did-resolver'
 import * as uint8arrays from 'uint8arrays'
 
 export async function createNewDID(seedString: string) {
@@ -11,7 +10,7 @@ export async function createNewDID(seedString: string) {
   const did = new DID({
     provider,
     resolver: {
-      ...KeyDidResolver.getResolver(),
+      ...KeyResolver.getResolver(),
     },
   })
 
