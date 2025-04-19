@@ -16,19 +16,19 @@ export const metadata: Metadata = {
     description: "Register for Prisma Events",
     images: [
       {
-        url: "https://prisma.events/sm_banner.png",
+        url: "https://register.prisma.events/sm_banner.png",
         width: 1504,
         height: 787,
         alt: "Prisma Events Registration Preview",
       },
     ],
-    url: "https://prisma.events",
+    url: "https://register.prisma.events",
   },
   twitter: {
     card: "summary_large_image",
     title: "Prisma Events Registration",
     description: "Register for Prisma Events",
-    images: ["https://yourwebsite.com/sm_banner.png"],
+    images: ["https://register.prisma.events/sm_banner.png"],
   },
 };
 
