@@ -16,7 +16,7 @@ export default function RegisterPage() {
     setLoading(true)
     try {
       const randomSeed = crypto.getRandomValues(new Uint8Array(32))
-      const seedString = Buffer.from(randomSeed).toString('hex').slice(0, 32)
+      const seedString = Buffer.from(randomSeed).toString('hex')
       const didInstance = await createNewDID(seedString)
       setDid(didInstance.id)
       setSeed(seedString)
